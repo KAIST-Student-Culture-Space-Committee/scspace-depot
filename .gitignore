@@ -1,3 +1,5 @@
 dist/
 
 AGENTS.*
+node_modules/
+node_compile_cache/
