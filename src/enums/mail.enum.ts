@@ -93,6 +93,22 @@ export const OrgStatusMeta = {
 
 
 export const ReservationMeta = {
+    ReservationPending: {
+        color: '#d69e2e',
+        emoji: DEFAULT_EMOJI_RESERVATION,
+        header: {
+            kr: "예약 승인 대기 안내",
+            en: "Reservation Pending Approval"
+        },
+        body: {
+            kr: "귀하의 예약이 접수되어 관리자 승인을 기다리고 있습니다.",
+            en: "Your reservation has been submitted and is awaiting manager approval."
+        },
+        contentUpperDesc: {
+            kr: "승인 대기 예약",
+            en: "Pending Reservation"
+        }
+    },
     ReservationCompleted: {
         color: '#4CAF50',
         emoji: DEFAULT_EMOJI_RESERVATION,
@@ -109,6 +125,38 @@ export const ReservationMeta = {
             en: "New Reservation"
         }
 
+    },
+    ReservationApproved: {
+        color: '#4CAF50',
+        emoji: DEFAULT_EMOJI_RESERVATION,
+        header: {
+            kr: "예약 승인 안내",
+            en: "Reservation Approved"
+        },
+        body: {
+            kr: "귀하의 예약이 승인되었습니다.",
+            en: "Your reservation has been approved."
+        },
+        contentUpperDesc: {
+            kr: "예약 승인",
+            en: "Reservation Approval"
+        }
+    },
+    ReservationRejected: {
+        color: '#eb4034',
+        emoji: DEFAULT_EMOJI_RESERVATION,
+        header: {
+            kr: "예약 반려 안내",
+            en: "Reservation Rejected"
+        },
+        body: {
+            kr: "귀하의 예약이 반려되었습니다.",
+            en: "Your reservation has been rejected."
+        },
+        contentUpperDesc: {
+            kr: "예약 반려",
+            en: "Reservation Rejection"
+        }
     },
 
     ReservationDeleted: {

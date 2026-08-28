@@ -9,4 +9,6 @@ export interface IReservationContent {
   workerId: number;
 }
 
-export type IReservationContentCreate = Omit<IReservationContent, "id" | "workerId">;
+export type IReservationContentCreate = Omit<IReservationContent, "id" | "workerId"> & {
+  workerNeedReason?: string;
+};

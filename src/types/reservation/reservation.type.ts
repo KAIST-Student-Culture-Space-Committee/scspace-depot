@@ -58,16 +58,26 @@ export type IReservationMultipleCreateResurt = Omit<
   }[];
 }
 
-export type IReservationUpdate = Partial<Omit<
+export type IReservationUpdate = Partial<Pick<
   IReservation,
-  "id" | "spaceId" | "organizationId" | "timePost" | "timeUpdate" | "state"
+  "title" | "timeFrom" | "timeTo"
 >> & {
-  id: number
+  id: number;
+  content?: Partial<IReservationContentCreate>;
 };
 
 export interface IReservationApplyWorker {
   id: number;
   workerId: number;
+}
+
+export type ReservationApprovalState =
+  | ReservationStateEnum.GRANT
+  | ReservationStateEnum.REJECTED;
+
+export interface IReservationApprovalRequest {
+  id: number;
+  state: ReservationApprovalState;
 }
 
 // 공간 예약 시간 체크 요청

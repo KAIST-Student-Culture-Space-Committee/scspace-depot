@@ -24,7 +24,7 @@ export interface IArticleCreate {
     state: number;
 }
 
-export type IArticleUpdate = Partial<Omit<IArticleCreate, "id">>;
+export type IArticleUpdate = Partial<Omit<IArticleCreate, "userId">>;
 
 export interface IArticleQuery {
     userId?: number;
@@ -41,6 +41,10 @@ export interface IArticleWithUser extends IArticle {
     user: IUser;
 }
 
+export interface IArticlePublicWithUser extends Omit<IArticle, "userId"> {
+    user: Pick<IUser, "nameKr">;
+}
+
 export interface IArticleFetchResult {
     articles: IArticleWithUser[];
     total: number;
@@ -49,8 +53,18 @@ export interface IArticleFetchResult {
     totalPages: number;
 }
 
-export interface IArticlePreview {
+export interface IArticlePublicFetchResult extends Omit<IArticleFetchResult, "articles"> {
+    articles: IArticlePublicWithUser[];
+}
+
+export interface IArticlePreviewWithUser {
     notice: IArticleWithUser;
     business: IArticleWithUser;
     promotion: IArticleWithUser;
+}
+
+export interface IArticlePreview {
+    notice: IArticlePublicWithUser;
+    business: IArticlePublicWithUser;
+    promotion: IArticlePublicWithUser;
 }

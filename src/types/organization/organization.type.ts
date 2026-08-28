@@ -25,7 +25,9 @@ export type IOrganizationDelegator = IOrganization & {
 export type IOrganizationCreate = Omit<
   IOrganization,
   "id" | "timeRegister" | "timeUpdate" | "status"
->;
+> & {
+  description?: string;
+};
 
 export type IOrganizationUpdate = Partial<Omit<
   IOrganization,

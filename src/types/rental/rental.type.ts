@@ -20,18 +20,25 @@ export interface IRental {
     usingPurpose: string | null;
     approverId: number | null;
     returnApproverId: number | null;
+    overdueContactedAt: number;
+    overdueContactedById: number | null;
     status: RentalStatusEnum;
 }
 
 export type IRentalAll = IRental & {
     user: IUser;
     goods: IGoods;
+    approver: IUser | null;
+    returnApprover: IUser | null;
+    overdueContactedBy: IUser | null;
 };
 
 export type IRentalCreateAdmin = Pick<
     IRental,
-    "userId" | "goodsId" | "count" | "groupName" | "contact" | "emergencyContact" | "usingLocation" | "usingPurpose"
+    "userId" | "goodsId" | "count" | "timeDue" | "groupName" | "contact" | "emergencyContact" | "usingLocation" | "usingPurpose"
 >;
+
+export type IRentalUpdateAdmin = Partial<IRentalCreateAdmin>;
 
 /**
  * @deprecated Use IRentalCreateAdmin for admin creation instead
@@ -40,18 +47,6 @@ export type IRentalCreate = Pick<
     IRental,
     "userId" | "goodsId" | "count" | "timeBorrow" | "timeDue"
 >;
-
-export type IRentalCreateClient = Pick<
-    IRentalCreate,
-    "count" | "goodsId"
->;
-
-export type IRentalUpdate = Partial<Pick<
-    IRental,
-    "timeReturn" | "timeConfirm"
->> & {
-    id: number;
-};
 
 // 대여 가능 여부 체크
 export type IGoodsAvailabilityCheck = {
@@ -65,4 +60,6 @@ export type IGoodsAvailabilityCheck = {
 export type IUserRentalStatus = {
     userId: number;
     isActive?: boolean; // true면 현재 대여중인 것만, false면 모든 대여 기록
+    limit?: number;
+    offset?: number;
 };

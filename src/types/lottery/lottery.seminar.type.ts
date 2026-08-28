@@ -3,6 +3,7 @@ export interface ISeminarLottery {
     infoId: number;
     organizationId: number;
     spaceId: number;
+    priority: number;
     time: number;
     lotteryWin: number; // 0: not winner, 1: winner
 }
