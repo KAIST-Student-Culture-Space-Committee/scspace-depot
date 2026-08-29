@@ -1,25 +1,26 @@
 import { IUser } from "../user";
 import { IGoods } from "./goods.type";
 import { RentalStatusEnum } from "../../enums/rental.enum";
+import { IOrganization } from "../organization";
 
 // Table: rental
 export interface IRental {
     id: number;
     userId: number;
+    organizationId: number;
+    rentalWorkerId: number;
+    returnWorkerId: number | null;
     goodsId: number;
     count: number;
     timeBorrow: number;
     timeDue: number;
     timeReturn: number;
-    timeConfirm: number;
     certName: string;
-    groupName: string | null;
-    contact: string | null;
-    emergencyContact: string | null;
-    usingLocation: string | null;
-    usingPurpose: string | null;
-    approverId: number | null;
-    returnApproverId: number | null;
+    phoneNumber: string;
+    emergencyContactPresident: string;
+    emergencyContactVicePresident: string;
+    reasonLocation: string;
+    reasonPurpose: string;
     overdueContactedAt: number;
     overdueContactedById: number | null;
     status: RentalStatusEnum;
@@ -27,15 +28,16 @@ export interface IRental {
 
 export type IRentalAll = IRental & {
     user: IUser;
+    organization: IOrganization;
     goods: IGoods;
-    approver: IUser | null;
-    returnApprover: IUser | null;
+    rentalWorker: IUser;
+    returnWorker: IUser | null;
     overdueContactedBy: IUser | null;
 };
 
 export type IRentalCreateAdmin = Pick<
     IRental,
-    "userId" | "goodsId" | "count" | "timeDue" | "groupName" | "contact" | "emergencyContact" | "usingLocation" | "usingPurpose"
+    "userId" | "organizationId" | "goodsId" | "count" | "timeDue" | "phoneNumber" | "emergencyContactPresident" | "emergencyContactVicePresident" | "reasonLocation" | "reasonPurpose"
 >;
 
 export type IRentalUpdateAdmin = Partial<IRentalCreateAdmin>;
