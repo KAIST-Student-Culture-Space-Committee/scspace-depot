@@ -13,6 +13,7 @@ type MailTemplate =
     | 'worker'
     | 'rentalNotif'
     | 'rentalReturnReq'
+    | 'rentalSuccess'
     | 'workerNeedReason';
 
 export interface IMail {
