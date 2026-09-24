@@ -26,6 +26,7 @@ export * from './enums/rental.enum'
 
 // Export constants
 export * from "./consts/article.const";
+export * from "./consts/duty.const";
 export * from "./consts/file.const";
 export * from "./consts/rental.const";
 export * from './consts/reservation.const';
